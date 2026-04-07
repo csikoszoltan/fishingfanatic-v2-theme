@@ -1,0 +1,30 @@
+{% if menu %}
+	<nav id="main-nav" class="w-full flex flex-col" role="navigation" aria-label="Elsődleges menü">
+		<div id="menu_header" class="relative bg-fishingorange px-8 py-3">
+			<span class=" font-mouse text-white uppercase lg:text-2xl tracking-wider font-bold ">Kategóriák</span>
+		</div>
+
+		<ul class="nav-menu flex flex-col items-start list-none text-base m-0 px-4 py-2 divide-y divide-gray-300">
+			{% for item in menu.items %}
+				<li class="nav-item relative w-full px-4 py-3 list-none {{ item.classes|join(' ') }}">
+					<a class="nav-link relative text-black hover:text-fishingorange transition-colors lg:py-4" href="{{ item.link }}">
+						{{ item.title }}
+					</a>
+					{% if item.children %}
+						<div class="sub-nav hidden top-12 left-0 w-60 text-black z-20">
+							<ul class="sub-nav-group space-y-2">
+								{% for child in item.children %}
+									<li class="submenu-item">
+										<a href="{{ child.link }}" class="submenu-link text-black hover:text-fishingorange transition-colors">
+											{{ child.title }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+{% endif %}

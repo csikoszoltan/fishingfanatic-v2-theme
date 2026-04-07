@@ -1,0 +1,66 @@
+<footer id="footer" style="background-image: url('{{ lablec_hatterkep }}')" class="relative w-full lg:min-h-96 bg-cover bg-center py-10">
+	{% if lablec_menu %}
+		<nav id="main-nav" class="container relative flex flex-col z-10 pb-10" role="navigation" aria-label="Lábléc menü">
+
+			<ul class="grid lg:grid-cols-4 list-none text-base px-0 py-2">
+				{% for item in lablec_menu.items %}
+					<li class="nav-item col-span-1 relative w-full py-3 list-none {{ item.classes|join(' ') }}">
+						<a class="nav-link text-white hover:text-fishingorange font-bold text-sm tracking-widest uppercase transition-colors px-0 lg:py-4" href="{{ item.link }}">
+							{{ item.title }}
+						</a>
+						{% if item.children %}
+							<div class="sub-nav z-20 pt-8">
+								<ul class="sub-nav-group space-y-2">
+									{% for child in item.children %}
+										<li class="submenu-item">
+											<a href="{{ child.link }}" class="submenu-link text-gray-300 text-base font-extralight">
+												{{ child.title }}
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	{% endif %}
+
+	<section class="container grid lg:grid-cols-3 gap-6 lg:gap-10 pb-10">
+		{% if telefonszam %}
+			<div class="col-span-1 text-white relative z-10 space-y-2 lg:space-y-4">
+				<span class="uppercase font-bold text-sm tracking-widest">Telefon</span>
+
+				<div class="flex items-center space-x-4">
+					<img src="{{ site.image_url }}/phone-call.png" alt="" class="w-4 lg:w-6">
+					<a href="tel:{{ telefonszam }}" class="text-white lg:text-2xl font-bold">{{ telefonszam }}</a>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if email %}
+			<div class="col-span-1 text-white relative z-10 space-y-2">
+				<span class="uppercase font-bold text-sm tracking-widest">Email</span>
+
+				<div class="flex items-center space-x-4">
+					<img src="{{ site.image_url }}/email.png" alt="" class="w-4 lg:w-6">
+					<a href="mailto:{{ email }}" class="text-white lg:text-2xl font-bold">{{ email }}</a>
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="col-span-1 text-white relative z-10 space-y-4">
+			<span class="uppercase font-bold text-sm tracking-widest">Kövess minket</span>
+
+			<div class="flex items-center space-x-4">
+				<img src="{{ site.image_url }}/facebook.png" alt="" class="w-6">
+				<img src="{{ site.image_url }}/instagram.png" alt="" class="w-6">
+			</div>
+		</div>
+	</section>
+
+	<p class="relative mx-auto text-gray-300 text-center z-10">Copyright
+		{{ 'now'|date('Y') }}
+		Fishing Fanatic</p>
+</footer>

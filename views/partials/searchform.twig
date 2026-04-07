@@ -1,0 +1,16 @@
+<form role="search" method="get" id="searchform" class="searchform lg:w-[500px] 2xl:ml-20" action="{{ site.link }}">
+	<div class="flex w-full bg-white px-4">
+		<label class="sr-only" for="searchinput">Keresés az alábbi kulcsszóra:</label>
+
+		<input type="text"
+			value="{{ function('get_search_query') }}"
+			placeholder="Keresés"
+			name="s"
+			id="searchinput"
+			class="w-full text-sm py-3" />
+
+		<button type="submit" id="searchsubmit">
+			<img src="{{ site.image_url }}/search.png" alt="Keresés" class="w-6" />
+		</button>
+	</div>
+</form>

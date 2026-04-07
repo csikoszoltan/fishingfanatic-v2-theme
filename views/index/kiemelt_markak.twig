@@ -1,0 +1,16 @@
+{% if kiemelt_markaink %}
+	<section class="py-20 lg:mt-10">
+		<header class="relative text-center mb-10">
+			<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase bg-white z-10 px-4">Kiemelt márkáink</h2>
+			<span class="heading_line"></span>
+		</header>
+
+		<div class="grid lg:grid-cols-5 lg:gap-32">
+			{% for marka in kiemelt_markaink %}
+				<a href="{{ marka.link }}" target="_blank" class="block col-span-1">
+					<img src="{{ marka.logo.url }}" alt="" class="max-w-44">
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endif %}

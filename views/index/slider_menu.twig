@@ -1,0 +1,46 @@
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+	{% include "partials/sidebar.twig" %}
+
+	<div class="col-span-1 md:col-span-2 lg:col-span-3">
+		<section class="relative z-40">
+			<div class="index_carousel">
+				{% for event in index_slider %}
+					<article class="relative">
+						<img src="{{ event.kep|resize(1500, 850, 'center') }}" alt="" class="w-full object-cover lg:h-auto"/>
+
+						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-col text-center space-y-8">
+							<span class="font-mouse text-white text-3xl lg:text-5xl font-bold tracking-wider uppercase lg:w-96 [&>p]:mb-0">{{ event.szoveg }}</span>
+
+							{% if event.gomb_felirat %}
+								<a href="{{ event.gomb_link }}" class="w-fit bg-fishingorange text-white uppercase text-xs tracking-wider px-4 py-2 font-bold">{{ event.gomb_felirat }}</a>
+							{% endif %}
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+
+			<ul id="homepage_events_controls" class="slider-controls absolute top-1/2 left-1/2 mx-auto flex w-full max-w-7xl -translate-x-1/2 list-none items-center justify-center p-0" aria-label="Slider navigáció" tabindex="0">
+				<li class="prev" data-controls="prev" aria-controls="customize">
+					<button type="button" class="btn-prev border-white focus:border active:border">
+						<img src="{{ site.image_url }}/slider_arrow.svg" alt="Előző elem" class="w-10 px-2"/>
+					</button>
+				</li>
+				<li class="next" data-controls="next" aria-controls="customize">
+					<button type="button" class="btn-next border-white focus:border active:border">
+						<img src="{{ site.image_url }}/slider_arrow.svg" alt="Következő elem" class="w-10 rotate-180 px-2"/>
+					</button>
+				</li>
+			</ul>
+		</section>
+
+		{% if bannerek %}
+			<section class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 mt-4 md:mt-8">
+				{% for banner in bannerek %}
+					<a href="{{ banner.link }}" target="_blank" class="col-span-1 block">
+						<img src="{{ banner.banner }}" alt="" class="w-full h-auto">
+					</a>
+				{% endfor %}
+			</section>
+		{% endif %}
+	</div>
+</div>

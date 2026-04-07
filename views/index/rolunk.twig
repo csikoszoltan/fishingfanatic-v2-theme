@@ -1,0 +1,14 @@
+{% if rolunk_szoveg %}
+	<section id="rolunk" class="pt-50">
+		<header class="relative text-center mb-10">
+			<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase bg-white z-10 px-4">Rólunk</h2>
+			<span class="heading_line"></span>
+		</header>
+
+		<div style="background-image:url('{{ rolunk_hatterkep }}')" class="relative flex items-center w-full lg:min-h-96 bg-cover bg-center lg:py-10">
+			<div class="text-gray-300 relative z-10 px-20 py-12 leading-loose">
+				{{ rolunk_szoveg }}
+			</div>
+		</div>
+	</section>
+{% endif %}

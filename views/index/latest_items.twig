@@ -1,0 +1,32 @@
+{% if latest_items %}
+	<section id="rolunk" class="relative w-full lg:min-h-112 bg-cover bg-center py-14 lg:mt-10" style="background-image:url('{{ legujabb_termekeink_hatterkep }}')">
+		<div class="container">
+			<header class="relative text-center mb-10 z-20">
+				<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase text-white z-10 px-4">Legújabb termékeink</h2>
+			</header>
+
+			<div>
+				<div class="relative z-10 bg-white border grid lg:grid-cols-4 py-8 -mb-40">
+					{% for item in latest_items %}
+						<article class="flex flex-col items-center justify-between py-6 min-h-80 gap-4">
+							<div class="flex flex-col justify-center items-center space-y-2 px-4 text-center">
+								<img src="{{ item.thumbnail.src|resize(200, 200, 'center') }}" class="object-cover mb-2"/>
+
+								{% set prod = fn('wc_get_product', item.ID) %}
+
+								<a href="{{ item.link }}" class="uppercase font-medium text-black hover:underline focus:underline">
+									{{ item.title }}
+								</a>
+
+								<span class="font-bold text-lg">{{ prod.get_regular_price() }}
+									Ft</span>
+							</div>
+
+							<a href="{{ site.site_url }}/?add-to-cart={{ prod.get_id() }}&quantity=1" class="bg-fishingorange hover:bg-black transition-colors text-white uppercase text-xs font-bold tracking-wider px-3 py-2">Kosárba teszem</a>
+						</article>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

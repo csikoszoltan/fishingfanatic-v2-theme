@@ -1,0 +1,46 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<div class="content-wrapper">
+		<section aria-label="Hírek">
+			<div>
+				<h1 class="">
+					{{ title }}
+				</h1>
+			</div>
+
+			<div>
+				{% for post in category_post %}
+					<article>
+						<a href="{{ post.link }}">
+							<div>
+								{% if post.thumbnail %}
+									<img src="{{ post.thumbnail.src|resize( 700, 700, 'center' ) }}"/>
+								{% endif %}
+							</div>
+
+							<div>
+								<h2>
+									{{ post.title }}
+								</h2>
+								<span>{{ post.post_date|date('Y. m. d. H:i') }}</span>
+								<div>
+									{% if (post.terms('category')|length) > 0 %}
+										<div class="pb-4">
+											{{ post.terms('category')|join(', ') }}
+										</div>
+									{% endif %}
+								</div>
+							</div>
+
+							<div>
+								{{ post.content }}
+							</div>
+						</a>
+					</article>
+				{% endfor %}
+			</div>
+		</section>
+	</div>
+	<!-- /content-wrapper -->
+{% endblock %}

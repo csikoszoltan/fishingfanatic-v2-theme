@@ -1,0 +1,37 @@
+{% if popular_items %}
+	<div class=" py-20">
+		<header class="relative text-center mb-10">
+			<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase bg-white z-10 px-4">Népszerű termékek</h2>
+			<span class="heading_line"></span>
+		</header>
+
+		<section class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+			<div class="col-span-1 lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-12">
+				{% for item in popular_items %}
+					<article class="flex flex-col lg:flex-row justify-center items-center lg:items-start space-x-10 lg:even:pl-8 lg:odd-pr-8">
+						<img src="{{ item.thumbnail.src|resize(150, 150, 'center') }}" class="object-cover"/>
+
+						<div class="lg:max-w-50 flex flex-col justify-center items-center lg:items-start space-y-2">
+							{% set prod = fn('wc_get_product', item.ID) %}
+
+							<a href="{{ item.link }}" class="uppercase font-medium text-black hover:underline">
+								{{ item.title }}
+							</a>
+
+							<span class="font-bold text-lg">{{ prod.get_regular_price() }}
+								Ft</span>
+
+							<a href="{{ site.site_url }}/?add-to-cart={{ prod.get_id() }}&quantity=1" class="w-fit bg-fishingorange hover:bg-black transition-colors text-white text-center uppercase text-xs font-bold tracking-wider px-3 py-2">Kosárba teszem</a>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+
+			<div class="col-span-1">
+				{% if nepszeru_termekek_banner %}
+					<img src="{{ nepszeru_termekek_banner }}" alt="">
+				{% endif %}
+			</div>
+		</section>
+	</div>
+{% endif %}

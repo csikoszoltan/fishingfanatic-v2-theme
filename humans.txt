@@ -1,0 +1,9 @@
+## Team
+
+Gallaidesign Kft.
+https://gallaidesign.hu
+
+
+## Site
+
+Software: Built with [Timber](https://upstatement.com/timber/) by Upstatement

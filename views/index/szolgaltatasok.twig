@@ -1,0 +1,14 @@
+{% if szolgaltatasok %}
+	<section class="py-20 grid lg:grid-cols-4 gap-4 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-fishingorange">
+		{% for szolg in szolgaltatasok %}
+			<div class="col-span-1 flex items-start [&:not(:first-child)]:lg:pl-6 gap-6 pt-4 lg:pt-0">
+				<img src="{{ szolg.piktogram.url }}" alt="" class="max-w-12 max-h-12">
+
+				<div class="flex flex-col text-sm">
+					<span class="font-bold pb-1">{{ szolg.cim }}</span>
+					<span class="font-extralight">{{ szolg.leiras }}</span>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+{% endif %}

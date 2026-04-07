@@ -1,0 +1,27 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<div class="bg-white py-8">
+		<header class="relative h-40 lg:h-72">
+			<h1 class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl lg:text-6xl font-bold font-mouse tracking-wider z-50">{{ fn('get_queried_object').name }}</h1>
+			<img src="{{ site.image_url }}/bg_pattern.jpg" alt="" class="h-full! w-full object-cover opacity-30">
+		</header>
+
+		{% do action('woocommerce_before_main_content') %}
+
+		<div class="before-shop-loop pt-4">
+			{% do action('woocommerce_before_shop_loop') %}
+		</div>
+
+		<div class="loop w-full grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-12 lg:pt-12">
+			{% for post in products %}
+				{% include ["woo/tease-product.twig"] %}
+			{% endfor %}
+		</div>
+
+		{% do action('woocommerce_after_shop_loop') %}
+		{% do action('woocommerce_after_main_content') %}
+	</div>
+
+
+{% endblock  %}

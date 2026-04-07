@@ -1,0 +1,7 @@
+/composer.lock
+/vendor/
+/wordpress/
+.phpunit.result.cache
+/node_modules
+/public/
+.DS_Store

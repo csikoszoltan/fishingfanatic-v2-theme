@@ -1,0 +1,39 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+
+	{% do action('woocommerce_before_single_product') %}
+
+	<article itemscope itemtype="https://schema.org/Product" class="single-product-details {{ post.class }} py-8">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+			<div class="entry-images col-span-1">
+				{% do action('woocommerce_before_single_product_summary') %}
+
+				{# <img src="{{ post.thumbnail.src('shop_single') }}"/> #}
+			</div>
+
+			<div class="summary entry-summary col-span-1 pt-2 space-y-2">
+				{% do action('woocommerce_single_product_summary') %}
+
+				<div class="pt-8">
+					{{ post.post_excerpt }}
+				</div>
+
+				<div>
+					{{ post.content }}
+				</div>
+			</div>
+		</div>
+
+		<meta itemprop="url" content="{{ post.link }}"/>
+	</article>
+
+	<div class="loop related_products w-full grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 lg:pt-12 pb-12">
+		{% for post in related_products %}
+			{% include ["woo/tease-product.twig"] %}
+		{% endfor %}
+	</div>
+
+	{% do action('woocommerce_after_single_product') %}
+
+{% endblock  %}
