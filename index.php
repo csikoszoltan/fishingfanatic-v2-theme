@@ -37,7 +37,7 @@ $popular_items = Timber::get_posts([
 ]);
 
 $latest_items = Timber::get_posts([
-	'posts_per_page' => 4,
+	'posts_per_page' => 20,
 	'post_type' => 'product',
 	'post_status' => 'publish',
 	'ignore_sticky_posts' => 1,

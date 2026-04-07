@@ -13,7 +13,49 @@
 		});
 	}
 
-	  function toggleFavourite(btn) {
+  if ($(".index_carousel").length > 0) {
+		tns({
+			container: ".index_carousel",
+			slideBy: "page",
+			autoplay: true,
+			autoplayHoverPause: true,
+			autoplayButton: false,
+			nav: false,
+			autoplayButtonOutput: false,
+			controlsContainer: "#homepage_events_controls",
+			speed: 600,
+		});
+	}
+
+	if ($(".latest_items_carousel").length > 0) {
+		tns({
+			container: ".latest_items_carousel",
+      responsive: {
+        0: {
+          items: 1,
+        },
+        640: {
+          items: 2,
+        },
+        900: {
+          items: 3,
+        },
+        1200: {
+          items: 5,
+        },
+      },
+			slideBy: "page",
+			autoplay: false,
+			autoplayHoverPause: true,
+			autoplayButton: false,
+			nav: false,
+			autoplayButtonOutput: false,
+			controlsContainer: "#latest_items_controls",
+			speed: 600,
+		});
+	}
+
+  function toggleFavourite(btn) {
     const $btn = $(btn);
     const productId = $btn.data('product-id');
 
