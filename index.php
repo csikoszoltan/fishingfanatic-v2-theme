@@ -44,6 +44,22 @@ $latest_items = Timber::get_posts([
 	'order' => 'DESC',
 ]);
 
+$mr_fisher = Timber::get_posts([
+	'posts_per_page' => 20,
+	'post_type' => 'product',
+	'post_status' => 'publish',
+	'ignore_sticky_posts' => 1,
+	'order' => 'DESC',
+	'tax_query' => [
+		[
+			'taxonomy' => 'product_cat',
+			'field'    => 'slug',
+			'terms'    => ['mr-fisher-ajanlasaval'],
+			'operator' => 'IN',
+		],
+	],
+]);
+
 $context = Timber::context([
 	'szolgaltatasok' => get_field('szolgaltatasok', 'options'),
 	'bannerek' => get_field('bannerek', 'options'),
@@ -55,6 +71,7 @@ $context = Timber::context([
 	'popular_items' => $popular_items->to_array(),
 	'latest_items' => $latest_items->to_array(),
 	'index_slider' => get_field('slider', 'options'),
+	'mr_fisher' => $mr_fisher->to_array(),
 ]);
 
 Timber::render($templates, $context);

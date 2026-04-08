@@ -1,13 +1,14 @@
-{% if latest_items %}
-	<section id="legujabb_termekek" class="relative w-full lg:min-h-150 bg-cover bg-center py-10 lg:mt-10 lg:mb-30" style="background-image:url('{{ legujabb_termekeink_hatterkep }}')">
+{% if mr_fisher %}
+	<section id="mr_fisher_ajanlasa" class="relative bg-fishingorange w-full lg:min-h-150 bg-cover bg-center py-10 mt-40">
 		<div class="container">
 			<header class="relative text-center mb-10 z-20">
-				<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase text-white z-10 px-4">Legújabb termékeink</h2>
+				<h2 class="relative inline-block text-center font-mouse text-3xl lg:text-5xl uppercase text-white bg-fishingorange z-10 px-4">Mr Fisher ajánlása</h2>
+				<span class="heading_line bg-white!"></span>
 			</header>
 
-			<div class="relative z-10 bg-white border pt-20 lg:pb-4 -mb-40">
-				<div class="latest_items_carousel">
-					{% for item in latest_items %}
+			<div class="relative z-10 bg-white pt-20 lg:pb-4">
+				<div class="mr_fisher_ajanlasa_carousel">
+					{% for item in mr_fisher %}
 						<article class="min-h-100 gap-4 flex flex-col justify-between items-center">
 							<div class="relative w-full h-75 flex flex-col items-center overflow-hidden bg-white mb-2">
 								<img src="{{ item.thumbnail.src|resize(200, 200, 'center') }}" class="object-cover mb-2"/>
@@ -27,7 +28,7 @@
 					{% endfor %}
 				</div>
 
-				<ul id="latest_items_controls" class="slider-controls absolute top-1/2 left-1/2 mx-auto flex w-full -translate-x-1/2 list-none items-center justify-center p-0" aria-label="Slider navigáció" tabindex="0">
+				<ul id="mr_fisher_ajanlasa_controls" class="slider-controls absolute top-1/2 left-1/2 mx-auto flex w-full -translate-x-1/2 list-none items-center justify-center p-0" aria-label="Slider navigáció" tabindex="0">
 					<li class="prev" data-controls="prev" aria-controls="customize">
 						<button type="button" class="btn-prev border-white focus:border active:border cursor-pointer">
 							<img src="{{ site.image_url }}/slider_arrow.svg" alt="Előző elem" class="w-10 px-2"/>

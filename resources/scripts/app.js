@@ -55,6 +55,34 @@
 		});
 	}
 
+  if ($(".mr_fisher_ajanlasa_carousel").length > 0) {
+		tns({
+			container: ".mr_fisher_ajanlasa_carousel",
+      responsive: {
+        0: {
+          items: 1,
+        },
+        640: {
+          items: 2,
+        },
+        900: {
+          items: 3,
+        },
+        1200: {
+          items: 5,
+        },
+      },
+			slideBy: "page",
+			autoplay: false,
+			autoplayHoverPause: true,
+			autoplayButton: false,
+			nav: false,
+			autoplayButtonOutput: false,
+			controlsContainer: "#mr_fisher_ajanlasa_controls",
+			speed: 600,
+		});
+	}
+
   function toggleFavourite(btn) {
     const $btn = $(btn);
     const productId = $btn.data('product-id');

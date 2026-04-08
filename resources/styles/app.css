@@ -380,7 +380,7 @@ footer::after {
   @apply absolute top-0 left-0 h-full w-full bg-black/60;
 }
 
-#rolunk > div::after {
+#legujabb_termekek > div::after {
   content: "";
 
   @apply absolute top-0 left-0 h-full w-full bg-black/60;
@@ -600,4 +600,32 @@ main#main-content .media-content .price {
 .ff-remove-fav:hover {
   color: #e63946;
   border-color: #e63946;
+}
+
+#mr_fisher_ajanlasa header::before {
+  content: "";
+  width: 60px;
+  height: 80px;
+  top: 40px;
+  left: 5px;
+  position: absolute;
+  display: inline-block;
+  background: url("/wp-content/themes/fishingfanatic-v2-theme/public/images/claw.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+
+#mr_fisher_ajanlasa header::after {
+  content: "";
+  width: 60px;
+  height: 80px;
+  top: -70px;
+  right: 5px;
+  position: absolute;
+  display: inline-block;
+  background: url("/wp-content/themes/fishingfanatic-v2-theme/public/images/claw.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
 }
