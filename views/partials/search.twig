@@ -2,10 +2,14 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-    <div class="content-wrapper">
-        {% for post in posts %}
-            {% include ['partials/tease-' ~ post.type ~ '.twig', 'partials/tease.twig'] %}
-        {% endfor %}
+    <div class="content-wrapper py-20">
+        <h1 class="text-center text-4xl lg:text-6xl font-bold font-mouse tracking-wider z-50 mb-20">{{ title }}</h1>
+
+        <div class="search loop w-full grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-12 lg:pt-12">
+            {% for post in posts %}
+                {% include ["woo/tease-product.twig"] %}
+            {% endfor %}
+        </div>
 
         {% include 'partials/pagination.twig' with {
             pagination: posts.pagination({

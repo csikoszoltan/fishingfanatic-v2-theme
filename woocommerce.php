@@ -15,7 +15,16 @@ if (is_singular('product')) {
 
     // Get related products
     $related_limit = wc_get_loop_prop('columns');
-    $related_ids = wc_get_related_products($context['post']->id, $related_limit);
+    // Get related product IDs
+    $related_ids = wc_get_related_products($context['post']->ID, $related_limit);
+
+    // Filter out out-of-stock products
+    $related_ids = array_filter($related_ids, function($product_id) {
+        $product = wc_get_product($product_id);
+        return $product && $product->is_in_stock();
+    });
+
+    // Get Timber posts
     $context['related_products'] = Timber::get_posts($related_ids)->to_array();
 
     // Restore the context and loop back to the main query loop.

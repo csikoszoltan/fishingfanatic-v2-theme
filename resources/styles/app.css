@@ -380,7 +380,8 @@ footer::after {
   @apply absolute top-0 left-0 h-full w-full bg-black/60;
 }
 
-#legujabb_termekek > div::after {
+#legujabb_termekek > div::after,
+#rolunk > div::after {
   content: "";
 
   @apply absolute top-0 left-0 h-full w-full bg-black/60;
@@ -528,7 +529,7 @@ main#main-content .media-content .price {
 }
 
 .woocommerce-pagination {
-  @apply mt-8
+  @apply mt-8;
 }
 
 .woocommerce-Price-amount.amount {
@@ -536,12 +537,12 @@ main#main-content .media-content .price {
 }
 
 .button.product_type_simple {
-  @apply rounded-none! text-xs! uppercase! px-3! py-2!;
+  @apply rounded-none! px-3! py-2! text-xs! uppercase!;
 }
 
 /* Favourite heart button */
 .fav-btn {
-  @apply bg-black border-none rounded-full cursor-pointer p-2 inline-flex items-center justify-center hover:text-red-500;
+  @apply inline-flex cursor-pointer items-center justify-center rounded-full border-none bg-black p-2 hover:text-red-500;
 }
 
 .fav-btn svg {
@@ -552,7 +553,6 @@ main#main-content .media-content .price {
 .fav-btn svg:hover {
   scale: 1.1;
 }
-
 
 .fav-btn.active svg {
   fill: white;
@@ -565,7 +565,7 @@ main#main-content .media-content .price {
 
 /* Favourites list on My Account */
 .ff-favourites-list {
-  @apply grid! grid-cols-1 grid-cols-3! gap-12 list-none!;
+  @apply grid! list-none! grid-cols-1 grid-cols-3! gap-12;
 }
 
 .ff-fav-item {
@@ -628,4 +628,26 @@ main#main-content .media-content .price {
   background-repeat: no-repeat;
   background-size: contain;
   overflow: hidden;
+}
+
+.search .button.product_type_simple {
+  left: auto;
+  color: #515151;
+  background-color: #e9e6ed;
+  border: 0;
+  display: inline-block;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  padding: 0.618em 1em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.product_meta {
+  @apply flex flex-col;
 }
