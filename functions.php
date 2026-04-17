@@ -174,21 +174,28 @@ add_action( 'woocommerce_account_favourites_endpoint', function() {
     echo '</ul>';
 });
 
-add_filter( 'posts_search', 'App\\search_by_sku_and_title', 10, 2 );
-function search_by_sku_and_title( $search, $wp_query ) {
+add_filter( 'posts_search', 'App\\extend_search_with_sku', 10, 2 );
+
+function extend_search_with_sku( $search, $wp_query ) {
     global $wpdb;
+    if ( empty( $search ) || ! $wp_query->is_search() || is_admin() ) {
+        return $search;
+    }
 
-    if ( ! is_admin() && $wp_query->is_search() && ! empty( $search ) ) {
+    $search_term = $wp_query->query_vars['s'];
+    $esc_search_term = $wpdb->esc_like( $search_term );
 
-        $search_term = $wp_query->query_vars['s'];
-
-        $search .= " OR EXISTS (
+    $search .= $wpdb->prepare( "
+        AND {$wpdb->posts}.post_type != 'attachment'
+        AND {$wpdb->posts}.post_status = 'publish'
+        OR EXISTS (
             SELECT 1 FROM {$wpdb->postmeta}
             WHERE post_id = {$wpdb->posts}.ID
             AND meta_key = '_sku'
-            AND meta_value LIKE '%" . esc_sql( $search_term ) . "%'
-        )";
-    }
+            AND meta_value LIKE %s
+        )", 
+        $esc_search_term 
+    );
 
     return $search;
 }
